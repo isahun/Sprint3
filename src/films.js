@@ -1,28 +1,64 @@
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(array) {
-  let result =  ???;
+function getAllDirectors(movies) {
+  let result = movies.map(movie => movie.director);
   console.log("EXERCICE 1 ->", result);
   return result;
 }
 
 // Exercise 2: Get the films of a certain director
-function getMoviesFromDirector(array, director) {
- 
+function getMoviesFromDirector(movies, director) {
+  const result = movies.filter(movie => movie.director === director);
+  return result;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
+function moviesAverageOfDirector(movies, director) {
+  const directorArray = movies.filter(movie => movie.director === director);
+
+  if (directorArray.length === 0) return 0;
+
+  const scoreSum = directorArray.reduce((total, movie) => (total + movie.score), 0);
   
+  const result = scoreSum / directorArray.length;
+  
+  return parseFloat(result.toFixed(2));
 }
 
 // Exercise 4:  Alphabetic order by title 
-function orderAlphabetically(array) {
+function orderAlphabetically(movies) {
+  let orderedFilms = [...movies];
+  orderedFilms = orderedFilms.sort(function (a, b) {
+    if (a.title > b.title) {
+      return 1;
+    } else if (a.title < b.title) {
+      return -1
+    } else { return 0 }
+  });
   
+  const result = orderedFilms.map(movie => movie.title).slice(0, 20);
+
+  return result;
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(movies) {
+  let orderedYear = [...movies];
+  
+  orderedYear.sort(function (a,b) {
+    if (a.year !== b.year) {
+      return a.year - b.year;
+    }
 
+    if (a.title > b.title) {
+      return 1; 
+    } else if (a.title < b.title) { 
+      return -1; 
+    } else { 
+      return 0; 
+    }
+  });
+
+  return orderedYear;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
