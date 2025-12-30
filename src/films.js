@@ -1,7 +1,7 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
   let result = movies.map(movie => movie.director);
-  console.log("EXERCICE 1 ->", result);
+  console.log("EXERCISE 1 ->", result);
   return result;
 }
 
@@ -44,7 +44,7 @@ function orderAlphabetically(movies) {
 function orderByYear(movies) {
   let orderedYear = [...movies];
   
-  orderedYear.sort(function (a,b) {
+  orderedYear.sort(function (a, b) {
     if (a.year !== b.year) {
       return a.year - b.year;
     }
@@ -62,21 +62,54 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(movies, genre) {
+  let movieCategory = movies.filter(movie => movie.genre.includes(genre));
+  if (movieCategory.length === 0) return 0;
 
-}
+  let catSum = movieCategory.reduce((total, movie) => (total + movie.score), 0)
+  let result = catSum / movieCategory.length;
+
+  return parseFloat(result.toFixed(2));
+  }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(movies) {
+  let movieDuration = movies.map(movie => {
+    let totalMins = 0;
 
-}
+    if (movie.duration.includes("h")) {
+      const movieHourToMins = parseInt(movie.duration)*60;
+      totalMins += movieHourToMins;
+    }
+
+    if (movie.duration.includes("min")) {
+      const minutes = parseInt(movie.duration.split("h ")[1]);
+      totalMins += minutes;
+    }
+
+    return {
+      ...movie,
+      duration: totalMins
+    };
+  });
+
+  return movieDuration;
+};
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(movies, year) {
+  const filmsbyYear = movies.filter(movie => movie.year === year);
+
+  const bestFilm = filmsbyYear.reduce((bestMovie, currentMovie) => { //(total, movie)
+    if (currentMovie.score > bestMovie.score) {
+      return currentMovie;
+    } else {
+      return bestMovie;
+    };
+  });
   
+  return [bestFilm]
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
