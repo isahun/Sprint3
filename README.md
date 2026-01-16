@@ -1,86 +1,139 @@
-# Sprint 3 IT Academy | Video management tool
+# Sprint 3 – Video Management Tool
 
-## Introduction
+## Overview
 
-A company in the audiovisual sector has asked us for a web application that will allow their employees to quickly find movies from a large database they have, since the process is currently done manually.
+**Video Management Tool** is a JavaScript project developed as part of the **Frontend Bootcamp – Sprint 3 at IT Academy**.
 
-You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies. You have 2 weeks to finish, which is how long this sprint lasts.
+The goal of this project is to implement **core data processing logic**—such as filtering, sorting, and calculations—over a movie dataset using **modern JavaScript (ES6)** array methods, ensuring correctness through **unit testing**.
 
-<br>
+This project does **not** include a user interface.  
+All functionality is implemented in JavaScript and validated via automated tests.
 
-## Requirements
+---
 
+## Motivation
 
-1. Clone this repo
+I built this project to:
+
+- Practice fundamental JavaScript concepts (functions, arrays, logic)
+- Gain confidence using array methods like `map`, `filter`, `reduce`, and `sort`
+- Write clean, test-oriented, and maintainable code
+- Prepare for more advanced challenges involving APIs, frameworks, and backend logic in future sprints
+
+This sprint acts as a solid foundation before moving on to more complex frontend architectures.
+
+---
+
+## Features
+
+This project includes functions that:
+
+- Extract all directors from a movie dataset  
+- Filter movies by director  
+- Calculate average scores for directors and genres  
+- Sort movies alphabetically (returning the first 20 titles)  
+- Sort movies by year (with secondary sorting by title)  
+- Convert movie durations into total minutes  
+- Find the best movie of a given year  
+
+All functions are **pure**, **well-tested**, and follow **ES6 best practices**.
+
+---
+
+## Project Structure
+
+src/
+├── data.js # Movies dataset
+├── films.js # Core logic implementation
+tests/
+├── films.spec.js # Jest unit tests
+test-results.html # Generated test report
+package.json
+README.md
+
+---
+
+## How to Run & Test
+
+Install dependencies and run tests:
+
 ```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3-movies
+npm install
+npm run test
 ```
-
-2. Unlink your repo from the itacademy repository
-```bash
-$ git remote rm origin
-```
-
-3. Link your repo to the repository you have to create in your github account
-```bash
-$ git remote add origin <your repo name!>
-```
-
-<br>
-
-## Submission
-
-1. Upon completion, run the following commands:
+For active development, you can use watch mode:
 
 ```bash
-$ git add .
-$ git commit -m "Sprint Solution"
-$ git push origin master
+npm run test:watch
 ```
 
-2. Create Pull Request.
+After running the tests, a file called test-results.html is generated automatically, showing detailed test results.
 
-3. Upload the link to the virtual campus so that your mentor can correct it and give you feedback.
+---
 
+## Tech Stack
 
+This project uses:
 
-<br>
+- JavaScript (ES6+)
+- Node.js
+- Jest for unit testing
+- Modern array methods (map, filter, reduce, sort)
 
-## Introduction
+---
 
-The statement of the exercise is available on the virtual campus.
+## Example Usage
 
-<br>
+Some example function calls:
 
-## Tests!
-
-
-```shell
-$ npm install
-$ npm run test:watch
+```bash
+    getAllDirectors(movies);
+    getMoviesFromDirector(movies, 'Quentin Tarantino');
+    moviesAverageOfDirector(movies, 'Christopher Nolan');
+    orderAlphabetically(movies);
 ```
 
-And last, open the generated `test-results.html` file with the "Live Server" VSCode extension to see test results.
+Each function returns predictable results based solely on the provided data.
 
-Apart from the statement, you will know exactly what you are asked to do by looking at the file `tests/films.spec.js`, all tests are already defined here!
+---
 
-<br>
+## Development Notes
 
-## Instructions
+- All logic is implemented in src/films.js
 
-You have the following indications from the frontend responsible:
+- Tests are written using Jest and located in tests/films.spec.js
 
-- It is mandatory to implement all loops in ES6 (using map, reduce, filter and sort to manipulate arrays).
+- The project follows a clean and maintainable structure aligned with professional conventions
 
-- As at the moment we don't consume data from a server using an API, we will work with data from the src/data.js archive. For the moment we will implement the logic using
-an array of information about 250 movies.
+---
 
-- The implementation is about processing this array of movies, to display it as requested in each exercise.
+## What I Learned
 
-- The logic to implement will be placed in the src/films.js file.
+During this sprint, I strengthened my understanding of:
 
-- You don't need to show the result of each function on the screen. Your goal is to pass the tests.  More information on how to program oriented to pass tests at the end of the document.
+- When to use arrow functions vs classic functions
 
-- Don't forget to include the capture of the test results in the virtual campus.
+- Writing pure functions without mutating input data
 
+- Reading and interpreting test files to guide implementation
 
+- Debugging and validating logic using Jest and console output
+
+---
+
+## Future Improvements
+
+If I were to extend this project, I would:
+
+- Add an interactive web-based UI
+
+- Fetch movie data from an external API instead of a static dataset
+
+- Introduce TypeScript for type safety
+
+- Add more exhaustive edge-case testing
+
+---
+
+## License
+This project is for educational purposes as part of the IT Academy Frontend Bootcamp.
